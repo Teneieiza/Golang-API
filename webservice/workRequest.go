@@ -84,10 +84,11 @@ func petHandler(w http.ResponseWriter, r *http.Request) {
 			w.WriteHeader(http.StatusInternalServerError)
 			return
 		}
-		//กรณีที่ไม่เจอ error ก็จะแสดง "Content-Type", "application/json" กลับมา
+		//กรณีที่ไม่เจอ error ก็จะไปบอก header ว่าให้เข้าไปในส่วนของ "Content-Type" และไปบอกว่าข้อมูลที่แสดงให้แสดงในรูปแบบ "application/json" กลับมา
 		w.Header().Set("Content-Type", "application/json")
 		//ใช้ Write เพื่อแสดงข้อมูล Json ออกมา
 		w.Write(petJson)
+		return
 
 	//method POST
 	case http.MethodPost:
